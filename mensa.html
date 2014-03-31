@@ -1,30 +1,27 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" href="css/style.css" />
-    	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-    	
-    	<script type="text/javascript" src="js/cordova.js"></script>
-    	
-    	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    	<script src="js/parse-1.1.2.min.js"></script>
-    	<script src="js/index.js"></script>
-    	<script src="js/csv.js"></script>
-    	<script src="js/jquery.jsonp-2.3.0.min.js"></script>
-        
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
+<link rel="stylesheet" href="css/style.css" />
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+<script type="text/javascript" src="js/cordova.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="js/parse-1.1.2.min.js"></script>
+<script src="js/index.js"></script>
+<script src="js/csv.js"></script>
+<script src="js/jquery.jsonp-2.3.0.min.js"></script>
 <link rel="stylesheet" type="text/css" href="push/css/component.css" />
 <script src="push/js/modernizr.custom.js"></script>
-        <title>DHBW2Go</title>
-    </head>
-    <body>
-       <!--- PUSH  -->
+<title>DHBW2Go</title>
+</head>
+<body>
+<!--- PUSH  -->
 <div class="cbp-spmenu-push">
-    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+  <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
     <h3>
       <button id="hideLeftPush"><span class="glyphicon glyphicon-align-justify"></span></button>
       Sidebar</h3>
@@ -42,82 +39,74 @@
 <script src="push/js/hammer.js"></script> 
 <script src="push/js/classie.js"></script> 
 <!--- PUSH  ENDE  -->
-	<div class="container">	
-		<div id="mensaH">Mensa</div>
-        <div id="showDay"></div>
-		<div id="inhalt">
-       	 <div>
-        	<h5 class="headline-menu" id="headM0"></h5>
-        	<p class="price-menu"id="priceM0"></p>
-        	<div class="description-menu"id="contentM0"></div>
-       	 </div>
-       	 <div class="gray">
-        	<h5 class="headline-menu" id="headM1"></h5>
-        	<p class="price-menu"id="priceM1"></p>
-        	<div class="description-menu"id="contentM1"></div>
-         </div>
-       	 <div>
-        	<h5 class="headline-menu" id="headM2"></h5>
-        	<p class="price-menu"id="priceM2"></p>
-        	<div class="description-menu"id="contentM2"></div>
-         </div>
-       	 <div class="gray">
-        	<h5 class="headline-menu" id="headM3"></h5>
-        	<p class="price-menu"id="priceM3"></p>
-        	<div class="description-menu"id="contentM3"></div>
-         </div>
-       	 <div>
-        	<h5 class="headline-menu" id="headM4"></h5>
-        	<p class="price-menu"id="priceM4"></p>
-        	<div class="description-menu"id="contentM4"></div>
-         </div>
-       	 <div class="gray">
-        	<h5 class="headline-menu" id="headM5"></h5>
-        	<p class="price-menu"id="priceM5"></p>
-        	<div class="description-menu"id="contentM5"></div>
-         </div>
-       	 <div>
-        	<h5 class="headline-menu" id="headM6"></h5>
-        	<p class="price-menu"id="priceM6"></p>
-        	<div class="description-menu"id="contentM6"></div>
-         </div>
-       	 <div class="gray">
-        	<h5 class="headline-menu" id="headM7"></h5>
-        	<p class="price-menu"id="priceM7"></p>
-        	<div class="description-menu"id="contentM7"></div>
-         </div>
-       	 <div>
-        	<h5 class="headline-menu" id="headM8"></h5>
-        	<p class="price-menu"id="priceM8"></p>
-        	<div class="description-menu"id="contentM8"></div>
-         </div>
-        </div>
-		<div id="mensa-footer">
-		<div id="mensaNav" class="span12">
-			<input id="T0" type="button" onclick="showMensa(this.id);" class="btn sample btn-lg btn-sample"></input>
-			<input id="T1" type="button" onclick="showMensa(this.id);" class="btn sample btn-lg btn-sample"></input>
-			<input id="T2" type="button" onclick="showMensa(this.id);" class="btn sample btn-lg btn-sample"></input>
-			<input id="T3" type="button" onclick="showMensa(this.id);" class="btn sample btn-lg btn-sample"></input>
-			<input id="T4" type="button" onclick="showMensa(this.id);" class="btn sample btn-lg btn-sample"></input>
-		</div>	
-		</div>
-		<script>
-		function KalenderWoche()
-		{
-		var KWDatum = new Date();
+<div class="container">
+  <div id="mensaH">Mensa</div>
+  <div id="showDay"></div>
+  <!-- Platzhalter für den Mensa Speiseplan, hier werden die Menüs reingeladen. Statisch angelegt, da dies immer gleich sein wird. Kann aber auch per JS umgesetzt werden (Wie z.B. beim Kalender). Ist aber Ressourcen-Lastig, daher so -->
+  <div id="inhalt">
+    <div>
+      <h5 class="headline-menu" id="headM0"></h5>
+      <p class="price-menu"id="priceM0"></p>
+      <div class="description-menu"id="contentM0"></div>
+    </div>
+    <div class="gray">
+      <h5 class="headline-menu" id="headM1"></h5>
+      <p class="price-menu"id="priceM1"></p>
+      <div class="description-menu"id="contentM1"></div>
+    </div>
+    <div>
+      <h5 class="headline-menu" id="headM2"></h5>
+      <p class="price-menu"id="priceM2"></p>
+      <div class="description-menu"id="contentM2"></div>
+    </div>
+    <div class="gray">
+      <h5 class="headline-menu" id="headM3"></h5>
+      <p class="price-menu"id="priceM3"></p>
+      <div class="description-menu"id="contentM3"></div>
+    </div>
+    <div>
+      <h5 class="headline-menu" id="headM4"></h5>
+      <p class="price-menu"id="priceM4"></p>
+      <div class="description-menu"id="contentM4"></div>
+    </div>
+    <div class="gray">
+      <h5 class="headline-menu" id="headM5"></h5>
+      <p class="price-menu"id="priceM5"></p>
+      <div class="description-menu"id="contentM5"></div>
+    </div>
+    <div>
+      <h5 class="headline-menu" id="headM6"></h5>
+      <p class="price-menu"id="priceM6"></p>
+      <div class="description-menu"id="contentM6"></div>
+    </div>
+    <div class="gray">
+      <h5 class="headline-menu" id="headM7"></h5>
+      <p class="price-menu"id="priceM7"></p>
+      <div class="description-menu"id="contentM7"></div>
+    </div>
+    <div>
+      <h5 class="headline-menu" id="headM8"></h5>
+      <p class="price-menu"id="priceM8"></p>
+      <div class="description-menu"id="contentM8"></div>
+    </div>
+  </div>
+  <div id="mensa-footer">
+    <div id="mensaNav" class="span12">
+      <input id="T0" type="button" onclick="showMensa(this.id);" class="btn sample btn-lg btn-sample">
+      </input>
+      <input id="T1" type="button" onclick="showMensa(this.id);" class="btn sample btn-lg btn-sample">
+      </input>
+      <input id="T2" type="button" onclick="showMensa(this.id);" class="btn sample btn-lg btn-sample">
+      </input>
+      <input id="T3" type="button" onclick="showMensa(this.id);" class="btn sample btn-lg btn-sample">
+      </input>
+      <input id="T4" type="button" onclick="showMensa(this.id);" class="btn sample btn-lg btn-sample">
+      </input>
+    </div>
+  </div>
+  <!-- Lädt die entsprechende Mensa.csv der aktuellen KW herunter und bereitet diese auf --> 
+  <script>
 		
-		var DonnerstagDat = new Date(KWDatum.getTime() +
-		(3-((KWDatum.getDay()+6) % 7)) * 86400000);
-		
-		KWJahr = DonnerstagDat.getFullYear();
-		
-		var DonnerstagKW = new Date(new Date(KWJahr,0,4).getTime() +
-		(3-((new Date(KWJahr,0,4).getDay()+6) % 7)) * 86400000);
-		
-		KW = Math.floor(1.5 + (DonnerstagDat.getTime() -
-		DonnerstagKW.getTime()) / 86400000/7);
-		return KW;
-		}
 		var baseUrl = "http://www.dhbw-loerrach.de/fileadmin/pubdocs/";
 		var url = baseUrl+'KW_'+KalenderWoche()+'.csv';
 		var day1;	
@@ -169,10 +158,7 @@
 				gem[11], gemPreis[12], beilage[11], beilagePreis[12], geni[11], geniPreis[12]);
 				
 				
-				var t = 'T';
-				
-				
-										
+				var t = 'T';										
 				
 				var dat = new Date().getDay();
 				if(dat > 5)
@@ -193,66 +179,9 @@
 				});	
 				
 				
-				function menuToDay(x){					
-					var days = new Array(day1,day2,day3,day4,day5);
-					var headers = new Array("Suppe ","Die Traditionellen ","Wok, Grill, Pasta ","Die Vegetarischen ","Gem&uuml;se & Co ","Beilagen ","Salateria ","Genie&szlig;er-Cup ");
-					
-					var inhalt = 'inhalt';
-					var head = 'head';
-					var content = 'content';
-					var price = 'price';
-					var t = 'T';
-					var a = 2;
-					var b = a+1;
-					var aktDay = days[x];
-					var res = salat[1];
-					var tres = res.split(" 100",1);
-					var pres = "100gr für je "+res.split(" EUR").pop()+"€";
-					document.getElementById('showDay').innerHTML = aktDay[0];
-					for( var j = 0; j < 8; j++)
-					{
-							
-							var getHead = document.getElementById(head+'M'+j);
-							var getContent = document.getElementById(content+'M'+j);
-							var getPrice = document.getElementById(price+'M'+j);
-							getHead.innerHTML = headers[j];
-							if(getHead.innerHTML == "Salateria ")
-							{
-								
-								getContent.innerHTML = tres;
-								getPrice.innerHTML = pres;
-								
-							}
-							else{
-							getContent.innerHTML = aktDay[a];
-							getPrice.innerHTML = aktDay[b];
-							a = b+1;
-							b = a+1;
-							}	
-					}
-				}
-					
 				
-			
-			
- 			function showMensa(x){
-					var dat = x.substring(1,2);
-	 				for(var i = 0; i < 5;i++)
-						{				
-							var menu = document.getElementById('T'+i);	
-							menu.setAttribute("class", "btn sample btn-lg btn-sample");		
-						}
-						
-						var menu = document.getElementById(x);
-						menu.setAttribute("class", "btn sample btn-lg btn-sample active ");
-						menuToDay(dat);
-		
-					
-				}
-		</script>
-
-	</div>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    
-     </body>
+		</script> 
+</div>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
 </html>

@@ -1,28 +1,24 @@
-<!DOCTYPE HTML> 
-<html> 
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
-    	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-    	
-    	<script type="text/javascript" src="js/cordova.js"></script>
-    	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    	<script src="js/parse-1.1.2.min.js"></script>
-    	<script src="js/index.js"></script>
-        
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+<script type="text/javascript" src="js/cordova.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="js/parse-1.1.2.min.js"></script>
+<script src="js/index.js"></script>
 <link rel="stylesheet" type="text/css" href="push/css/component.css" />
 <script src="push/js/modernizr.custom.js"></script>
-
-        <title>DHBW2Go</title>
-    </head>
-    <body onload="loadProfil()">
-        <!--- PUSH  -->
+<title>DHBW2Go</title>
+</head>
+<body onload="loadProfil()">
+<!--- PUSH  -->
 <div class="cbp-spmenu-push">
-    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+  <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
     <h3>
       <button id="hideLeftPush"><span class="glyphicon glyphicon-align-justify"></span></button>
       Sidebar</h3>
@@ -40,34 +36,35 @@
 <script src="push/js/hammer.js"></script> 
 <script src="push/js/classie.js"></script> 
 <!--- PUSH  ENDE  -->
-	<div class="container">
-		<div id="profilDiv">
-        </div>
-        <h5>Passwort ändern</h5>
-        <input id="pwa" required class="form-control span12" type="password" placeholder="Altes Passwort"><br>
-        <input id="pwn" required class="form-control span12" type="password" placeholder="Neues Passwort"><br>
-        <input required class="form-control span12" id="pwn2" type="password" placeholder="Neues Passwort bestätigen"><br>
-        <br><br>
-        
-        <button onclick="changePw()" class="btn btn-sucess span12">Passwort ändern</button>
-        <br>
-       <!-- <button onclick="changeRemember()" id="changeRemember" class="btn btn-sucess span12">Änderung übernehmen</button>-->
-        <button onclick="goOut()" class="btn btn-sucess span12">Logout</button><br>
-        <div id="regnew">
-         <input id="email"  required class="form-control span12" type="text" placeholder="E-Mail-Adresse">
-         <label class="JCheckBox">
-        <input id="event" type="checkbox" value="Event" checked>
-            Events anlegen
-        </label>
-        <label class="JCheckBox">
-        <input id="admin" type="checkbox" value="Admin">
-            erlauben, neue Benutzer zu berechtigen
-        </label>
-        </div>
-        
-        <button id="addNewUser" onclick="addNewUser(this)" class="btn btn-sucess span12">Neuen Benutzer berechtigen</button>
-        <div id="errorMsg"></div>
-        
-	</div>
-</body> 
+<div class="container">
+  <div id="profilDiv"> </div>
+  <!-- Passwort ändern BEGIN -->
+  <h5>Passwort ändern</h5>
+  <input id="pwa" required class="form-control span12" type="password" placeholder="Altes Passwort">
+  <br>
+  <input id="pwn" required class="form-control span12" type="password" placeholder="Neues Passwort">
+  <br>
+  <input required class="form-control span12" id="pwn2" type="password" placeholder="Neues Passwort bestätigen">
+  <br>
+  <br>
+  <br>
+  <button onclick="changePw()" class="btn btn-sucess span12">Passwort ändern</button>
+  <!-- Passwort ändern ENDE --> 
+  <br>
+  <!-- Logout -->
+  <button onclick="goOut()" class="btn btn-sucess span12">Logout</button>
+  <br>
+  <div id="regnew">
+    <input id="email"  required class="form-control span12" type="text" placeholder="E-Mail-Adresse">
+    <label class="JCheckBox">
+      <input id="event" type="checkbox" value="Event" checked>
+      Events anlegen </label>
+    <label class="JCheckBox">
+      <input id="admin" type="checkbox" value="Admin">
+      erlauben, neue Benutzer zu berechtigen </label>
+  </div>
+  <button id="addNewUser" onclick="addNewUser(this)" class="btn btn-sucess span12">Neuen Benutzer berechtigen</button>
+  <div id="errorMsg"></div>
+</div>
+</body>
 </html>

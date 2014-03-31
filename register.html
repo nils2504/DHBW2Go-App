@@ -1,51 +1,37 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
-    	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-    	
-    	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    	<script type="text/javascript" src="js/cordova.js"></script>
-    	<script type="text/javascript" src="js/cordova_plugins.js"></script>
-    	<script src="js/parse-1.1.2.min.js"></script>
-    	<script src="js/index.js"></script>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/cordova.js"></script>
+<script type="text/javascript" src="js/cordova_plugins.js"></script>
+<script src="js/parse-1.1.2.min.js"></script>
+<script src="js/index.js"></script>
+<title>DHBW2Go</title>
+</head>
 
-        <title>DHBW2Go</title>
-    </head>
-
-    
-    <body>
-	<div class="container">		
-		<p class="logoP">
-   			<img src="img/dhbwlogo.png" class="logo" title="DHBWLogo">
-   		</p>
-		
-		<form id="registerForm">
-        
-			<label for="user">Benutzername:</label>
-			<input type="text" id="user" class="input-xlarge span12" placeholder="Benutzername">
-
-			<label for="password">Passwort</label>
-			<input type="password" id="password" class="input-xlarge span12" placeholder="Passwort">
-			
-            <label for="mail">E-Mail</label>
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="E-Mail-Adresse">
-              <span class="input-group-addon">@dhbw-loerrach.de</span>
-            </div>
-			<br><br>
-			
-			<button type="submit" class="btn btn-block btn-primary" >Registrieren</button>
-
-		</form>
-	</div>
-	<script src="bootstrap/js/bootstrap.min.js"></script>
-    
-    
-    </body>
+<body>
+<div class="container">
+  <p class="logoP"> <img src="img/dhbwlogo.png" class="logo" title="DHBWLogo"> </p>
+  <form id="registerForm">
+    <label for="user">Benutzername:</label>
+    <input type="text" id="user" class="input-xlarge span12" placeholder="Benutzername">
+    <label for="password">Passwort</label>
+    <input type="password" id="password" class="input-xlarge span12" placeholder="Passwort">
+    <label for="mail">E-Mail</label>
+    <div class="input-group">
+      <input type="text" id="mail" class="form-control" placeholder="E-Mail-Adresse">
+      <span class="input-group-addon">@dhbw-loerrach.de</span> </div>
+    <br>
+    <br>
+    <button type="submit" class="btn btn-block btn-primary" >Registrieren</button>
+  </form>
+</div>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
 </html>

@@ -1,27 +1,33 @@
-<!DOCTYPE HTML> 
-<html> 
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
-    	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-    	
-    	<script type="text/javascript" src="js/cordova.js"></script>
-    	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    	<script src="js/parse-1.1.2.min.js"></script>
-    	<script src="js/index.js"></script>
-        
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
+<!-- Unser Stylesheet -->
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<!-- Bootstrap CSS, teils modifiziert -->
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+<!-- Cordova Framework -->
+<script type="text/javascript" src="js/cordova.js"></script>
+<!-- JQuery Framework -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<!-- Datenbank-Framework -->
+<script src="js/parse-1.1.2.min.js"></script>
+<!-- Unser eigenes JavaScript -->
+<script src="js/index.js"></script>
+<!-- PUSH MENU Dateien -->
 <link rel="stylesheet" type="text/css" href="push/css/component.css" />
 <script src="push/js/modernizr.custom.js"></script>
-        <title>DHBW2Go</title>
-    </head>
-    <body onload="inoutauto()">
-       <!--- PUSH  -->
+<title>DHBW2Go</title>
+</head>
+<!-- User eingeloggt? Wenn nein, zeige "Login required" Felder und ein Login-Icon. Wenn ja, erlaube Zugang und zeige Profil Icon -->
+<body onload="inoutauto()">
+<!--- PUSH  -->
 <div class="cbp-spmenu-push">
-   <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+  <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
     <h3>
       <button id="hideLeftPush"><span class="glyphicon glyphicon-align-justify"></span></button>
       Sidebar</h3>
@@ -39,21 +45,22 @@
 <script src="push/js/hammer.js"></script> 
 <script src="push/js/classie.js"></script> 
 <!--- PUSH  ENDE  -->
-	<div class="container">	
-		<article id="metroNav">
-		<div class="line">
-			<div class="left"><a href="calender.html"><img class="metroImg" src="img/stundenplan.jpg" alt="Stundenplan"/></a></div>
-			<div class="right"><a href="mensa.html"><img class="metroImg" src="img/mensa.jpg" alt="Mensa"/></a></div>
-		</div>
-		<div class="line">
-			<div class="left"><a href="news.html"><img class="metroImg" src="img/news.jpg" alt="News"/></a></div>
-			<div class="right"><a class="loginr" onclick="alert('Login reguired')" href=""><img id="dozenten" class="metroImg" src="img/dozentenLog.jpg" alt="Dozent"/></a></div>           
-		</div>
-		<div class="line">
-         <div class="left"><a onclick="window.open('http://mobile.bahn.de/bin/mobil/query.exe/dox?country=DEU&rt=1&use_realtime_filter=1&webview=&searchMode=NORMAL&sotRequest=1', '_blank', 'location=yes');"><img class="metroImg" src="img/zug.jpg" alt="Dozent"/></a></div>		
-			<div class="right"><a id="ina" href=""><img id="in" class="metroImg" src="img/login.jpg" alt="Logout"/></a></div>
-		</div>
-		</article>
-	</div>
-</body> 
+<div class="container">
+  <article id="metroNav">
+    <div class="line">
+      <div class="left"><a href="calender.html"><img class="metroImg" src="img/stundenplan.jpg" alt="Stundenplan"/></a></div>
+      <div class="right"><a href="mensa.html"><img class="metroImg" src="img/mensa.jpg" alt="Mensa"/></a></div>
+    </div>
+    <div class="line">
+      <div class="left"><a href="news.html"><img class="metroImg" src="img/news.jpg" alt="News"/></a></div>
+      <div class="right"><a class="loginr" onclick="alert('Login reguired')" href=""><img id="dozenten" class="metroImg" src="img/dozentenLog.jpg" alt="Dozent"/></a></div>
+    </div>
+    <div class="line">
+    <!-- In APP Browser für die DB App -->
+      <div class="left"><a onclick="window.open('http://mobile.bahn.de/bin/mobil/query.exe/dox?country=DEU&rt=1&use_realtime_filter=1&webview=&searchMode=NORMAL&sotRequest=1', '_blank', 'location=yes');"><img class="metroImg" src="img/zug.jpg" alt="Dozent"/></a></div>
+      <div class="right"><a id="ina" href=""><img id="in" class="metroImg" src="img/login.jpg" alt="Logout"/></a></div>
+    </div>
+  </article>
+</div>
+</body>
 </html>

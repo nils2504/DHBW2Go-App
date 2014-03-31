@@ -23,10 +23,10 @@
 	
     <name>DHBW2Go</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        DHBW APP v1.0
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="rhode@stilecht-graphics.de" href="http://www.stilecht-graphics.de">
+        Nils Rhode
     </author>
     <content src="index.html" />
     <access origin="*" />
