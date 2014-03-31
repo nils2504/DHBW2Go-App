@@ -1,0 +1,404 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+<script type="text/javascript" src="js/cordova.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="js/parse-1.1.2.min.js"></script>
+<script src="js/index.js"></script>
+<link rel="stylesheet" type="text/css" href="push/css/component.css" />
+<script src="push/js/modernizr.custom.js"></script>
+<title>DHBW2Go</title>
+</head>
+<body>
+<!--- Sidebar Menu -->
+<div class="cbp-spmenu-push">
+    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+    <h3>
+      <button id="hideLeftPush"><span class="glyphicon glyphicon-align-justify"></span></button>
+      Sidebar</h3>
+    <a href="index.html">Home</a> <a href="calender.html">Studenplan</a> <a href="mensa.html">Mensa</a> <a href="news.html">News</a> <a href="dozenten.html">Dozenten</a> <a onclick="window.open('http://mobile.bahn.de/bin/mobil/query.exe/dox?country=DEU&rt=1&use_realtime_filter=1&webview=&searchMode=NORMAL&sotRequest=1', '_blank', 'location=yes');">Zug/Bus</a></nav>
+  <div id="container">
+    <div class="main">
+      <section>
+        <button id="showLeftPush"><span class="glyphicon glyphicon-align-justify"></span></button>
+        <p class="dhlabel">DHBW2Go<span style="padding-left:15px" class="glyphicon glyphicon-send"></span></p>
+      </section>
+    </div>
+  </div>
+</div>
+</div>
+<script src="push/js/hammer.js"></script> 
+<script src="push/js/classie.js"></script> 
+<!--- PUSH  ENDE  -->
+<div class="container">
+  <div id="calH">Bewertet eure Dozenten</div>
+  <br>
+  <br>
+  <div id="jquery-live-search-example">
+    <form method="post" action="/search/">
+      <p>
+        <label>Geben Sie den Nachnamen des Dozenten ein</label>
+        <select class="myselect span12" id="dozentenSelect">
+        </select>
+    </form>
+  </div>
+  <button class="span12" onclick="showNewRate()" value="Bewertung abgeben">Bewertung abgeben</button>
+  <br>
+  <br>
+  <div id="showRate"> </div>
+  <div id="addNew" style="display:none">
+    <label for="Nachname">Nachname: </label>
+    <input class="span12" type="text" name="Nachname" id="name" />
+    <label for="Fach">Fach: </label>
+        <label>Wählen Sie den Kurs des Dozenten an</label>
+        <select class="myselect span12" id="kurseSelect">
+        </select>
+        <input type="text" class="span7" id="newKurseSelect" style="display:none; float:left" default="neuen Kurs anlegen" />
+    	<button class="span4" id="newKurseSelectBut" onclick="newKurse()" style="display:none;float:right" onclick="" value="Kurs anlegen">Kurs anlegen</button>
+	<br><br>
+    <label for="Note">erhaltene Note: </label>
+    <input class="span12" type="text" name="Note" id="note" />
+    <!--<label for="Fairness">Fairness: </label>
+    <input class="span12" type="text" name="Fairness" id="fair" />
+    <label for="Kompetenz">Kompetenz: </label>
+    <input class="span12" type="text" name="Kompetenz" id="fair" />
+    <label for="Unterricht">Unterricht/Betreuung: </label>
+    <input class="span12" type="text" name="Unterricht" id="unterricht" />
+    <label for="Bemerkung">Bemerkung: </label>
+    <textarea class="span12" type="text" name="Bemerkung" id="kommentar" ></textarea>-->
+    <label for="gesamtbewertung">Gesamtbewertung: </label>
+    <div id="Gesamtbewertung">
+    	<span id="star1" class="bstar glyphicon glyphicon-star-empty" onClick="starover(1)" ></span>
+    	<span id="star2" class="bstar glyphicon glyphicon-star-empty" onClick="starover(2)" ></span>
+    	<span id="star3" class="bstar glyphicon glyphicon-star-empty" onClick="starover(3)" ></span>
+    	<span id="star4" class="bstar glyphicon glyphicon-star-empty" onClick="starover(4)" ></span>
+    	<span id="star5" class="bstar glyphicon glyphicon-star-empty" onClick="starover(5)" ></span>
+    </div>
+    <br>
+    <br>
+    <button class="span12" onclick="addBew()" value="Absenden">Absenden</button>
+  </div>
+  <script>
+  	var kurse = new Array();
+	var ph = 0;
+	var dozk = new Array();
+	var option = document.createElement("option");
+	option.text = "-------";
+	option.value = "nothing";
+    document.getElementById("dozentenSelect").appendChild(option);
+	
+ 	var dozenten = Parse.Object.extend("Dozenten");
+	var query = new Parse.Query(dozenten);
+	
+	
+	query.find({
+ 	success: function(results) {
+    	for (var i = 0; i < results.length; i++) {
+			var object = results[i];
+			var val = object.get('Nachname');
+			var option = document.createElement("option");
+			option.text = val;
+			option.value = object.id;
+      		document.getElementById("dozentenSelect").appendChild(option);
+    	}
+  	},
+  	error: function(error) {
+  	}
+	});
+	$(document).ready(function() {	
+		$("#dozentenSelect").change(function(){getDozB()});	
+		
+		
+		
+});
+function getDozB(){
+			var div = document.getElementById('showRate');
+			div.innerHTML = "";
+			kurse.length = 0;
+			ph = 0;
+			var currentDozent = $("#dozentenSelect :selected").val();
+			
+			
+			var dk = Parse.Object.extend("DozentenKurse");
+			var qdk = new Parse.Query(dk);
+			qdk.equalTo("dozentenObject",currentDozent);
+			var j = 0;
+			qdk.find({
+				success: function(results) {
+						for(var i = 0; i<results.length;i++){
+							dozk[j] = results[i].id;
+							j++;
+							dozk[j] = results[i].get('name');
+							j++;
+						
+						}
+				},
+				error: function(){}
+			});
+			
+			
+			var db = Parse.Object.extend("DozentenBewertung");
+			var qdb = new Parse.Query(db);
+			qdb.equalTo("dozentenObject",currentDozent);
+			qdb.find({
+				success: function(results) {
+					for(var i = 0; i<results.length; i++){
+						var object = results[i];
+						fillDozentBewert(object.get('kurseObject'),object.get('note'),object.get('gesamt'));
+					}
+					if(kurse.length > 0){
+						loadKurse(kurse);
+					}
+					else{
+					div.innerHTML = "Keine Kurse gefunden - sei der erste der diesen Dozent bewertet";	
+					}
+				},
+				error: function() {}
+			});
+	}
+	function fillDozentBewert(kurseObj,noteObj,gesObj){
+		
+		var neuerKurs = 1;
+		var neuerKursPoint;
+		var bewInhalt = 0;
+		for(var j = 0; j<kurse.length; j++){
+			if(kurseObj == kurse[j][0]){
+					neuerKurs = 0;
+					neuerKursPoint = j;
+			}
+		}
+		if(neuerKurs == 1){
+				kurse[ph] = new Array();								
+				kurse[ph][0] = kurseObj;
+								
+				kurse[ph][1] = new Array();
+				kurse[ph][1][0] = parseFloat(noteObj);
+								
+				kurse[ph][2] = new Array();
+				kurse[ph][2][0] = parseFloat(gesObj);
+				ph = ph +1;
+		}
+		else{
+				var x = kurse[neuerKursPoint][1].length;	
+				var y = kurse[neuerKursPoint][2].length;	
+				kurse[neuerKursPoint][1][x] = parseFloat(noteObj);
+				kurse[neuerKursPoint][2][y] = parseFloat(gesObj);
+				neuerKurs = 1;
+		}
+	}
+	function loadKurse(kurse){
+				var num = 0;
+				var div = document.getElementById('showRate');
+				
+				for(var i = 0; i<kurse.length;i++){
+					
+					var summeN = 0;
+					var summeB = 0;	
+					var fach = document.createElement("H5");
+					for(var l = 0; l<dozk.length;l++){						
+						if(dozk[l] == kurse[i][0]){
+							var m = l+1;
+							fach.innerHTML = dozk[m];
+						}
+					}
+								
+					
+					var divFach = document.createElement("DIV");
+					
+					for(var j = 0; j<kurse[i][2].length;j++){
+						summeB = summeB+kurse[i][2][j];
+					}		
+					summeB = (summeB/kurse[i][2].length).toFixed(2);
+					
+					var bew = document.createElement("P");
+					var span0 = document.createElement("SPAN");
+					span0.setAttribute("class","star glyphicon glyphicon-star-empty");
+					var span1 = document.createElement("SPAN");	
+					span1.setAttribute("class","star glyphicon glyphicon-star-empty");
+					var span2 = document.createElement("SPAN");	
+					span2.setAttribute("class","star glyphicon glyphicon-star-empty");
+					var span3 = document.createElement("SPAN");	
+					span3.setAttribute("class","star glyphicon glyphicon-star-empty");
+					var span4 = document.createElement("SPAN");	
+					span4.setAttribute("class","star glyphicon glyphicon-star-empty");
+					
+					if(summeB >= 1){
+					span0.setAttribute("class","star glyphicon glyphicon-star");	
+					}				
+					if(summeB >= 2){
+					span1.setAttribute("class","star glyphicon glyphicon-star");		
+					}								
+					if(summeB >= 3){
+					span2.setAttribute("class","star glyphicon glyphicon-star");	
+					}				
+					if(summeB >= 4){	
+					span3.setAttribute("class","star glyphicon glyphicon-star");	
+					}					
+					if(summeB == 5){
+					span4.setAttribute("class","star glyphicon glyphicon-star");	
+					}														
+					
+					bew.innerHTML = "Gesamtbewertung: ";
+					bew.appendChild(span0);
+					bew.appendChild(span1);
+					bew.appendChild(span2);
+					bew.appendChild(span3);
+					bew.appendChild(span4);
+					bew.appendChild(document.createTextNode( " ("+summeB+" Sterne)"));
+					
+					
+					for(var k = 0; k<kurse[i][1].length;k++){
+						summeN = summeN+kurse[i][1][k];
+					}
+					summeN = (summeN/kurse[i][1].length).toFixed(2);					
+					var note = document.createElement("P");		
+					note.innerHTML = "Notenschnitt: "+summeN;	
+					divFach.appendChild(fach);		
+					divFach.appendChild(note);
+					divFach.appendChild(bew);
+					var pp = document.createElement('P');
+					pp.innerHTML = "Abgegebene Bewertungen:"+kurse[i][2].length;
+					divFach.appendChild(pp);
+					div.appendChild(divFach);
+			}
+	}
+	
+	
+	
+	function showNewRate(){
+		document.getElementById('newKurseSelect').style.display = "none";		
+		document.getElementById('newKurseSelectBut').style.display = "none";	
+		if(document.getElementById('addNew').style.display == "block"){
+			document.getElementById('addNew').style.display = "none";
+			document.getElementById('showRate').style.display = "block";
+								
+		}
+		else{
+			document.getElementById('addNew').style.display = "block";
+			document.getElementById('showRate').style.display = "none";
+			var myNode = document.getElementById('kurseSelect');
+			while (myNode.firstChild) {
+   				 myNode.removeChild(myNode.firstChild);
+			}
+					
+			currentDozent = $("#dozentenSelect :selected").val();				
+			var dk = Parse.Object.extend("DozentenKurse");
+			var qdk = new Parse.Query(dk);
+			setTimeout(function(){
+				qdk.equalTo("dozentenObject",currentDozent);
+				qdk.find({
+			 	success: function(results) {
+					for (var i = 0; i < results.length; i++) {								
+						var object = results[i];
+						var val = object.get('name');
+						var id = object.id;
+						var option = document.createElement("option");
+						option.text = val;
+						option.value = id;
+						document.getElementById("kurseSelect").appendChild(option);
+					}
+					var option = document.createElement("option");
+					option.text = "neuen Kurs hinzufügen:";
+					option.value = "add";
+					document.getElementById("kurseSelect").appendChild(option);
+				 },
+				 error:function(){}		 
+				});
+			},500);				
+			document.getElementById('name').setAttribute("readonly","true");
+			$("#name").val($("#dozentenSelect :selected").text());
+		}
+	}
+	function newKurse(){
+		dk = Parse.Object.extend("DozentenKurse");
+		var dkn = new dk;
+		var dobj = $("#dozentenSelect :selected").val();					
+		var nobj = $("#newKurseSelect").val();
+		dkn.save({
+			dozentenObject: dobj,
+			name: nobj
+		}, {
+				success: function(permAgain) {
+					var id = permAgain.id;
+					var opt = document.createElement("OPTION");
+					opt.text = nobj;
+					opt.value = id;
+					opt.setAttribute("selected","selected");
+					document.getElementById('kurseSelect').appendChild(opt);
+					document.getElementById('newKurseSelect').style.display = "none";		
+					document.getElementById('newKurseSelectBut').style.display = "none";			
+				  	
+				  },
+					error: function(permAgain, error) {
+				 
+				}
+		});
+	}
+	$("#kurseSelect").change(function(){
+		if($("#kurseSelect :selected").val() == "add"){
+			document.getElementById('newKurseSelect').style.display = "block";
+			document.getElementById('newKurseSelectBut').style.display = "block";	
+		}
+	});
+		$("#kurseSelect").click(function(){
+		if($("#kurseSelect :selected").val() == "add"){
+			document.getElementById('newKurseSelect').style.display = "block";
+			document.getElementById('newKurseSelectBut').style.display = "block";	
+		}
+	});
+	function starover(x){
+	for(var i = 1; i <= 5; i++){
+		var span = "star"+i;
+		if(i <= x){		
+			document.getElementById(span).setAttribute('class','bstar glyphicon glyphicon-star');
+		}
+		else{
+			document.getElementById(span).setAttribute('class','bstar glyphicon glyphicon-star-empty');
+		}
+	}
+	}
+	$('#note').change(function(){
+		var grade = $('#note').val();
+		if(	grade >= 1 && grade <= 5){
+		}
+		else{ alert("Bitte geben Sie eine realistische Note(1-5) ein.");}
+	})
+	function addBew(){
+		var n = parseInt($('#note').val());
+		var g = parseInt(document.getElementsByClassName('bstar glyphicon-star').length);
+		var ko = $('#kurseSelect :selected').val();
+		var dob = $('#dozentenSelect :selected').val();
+		console.log(n);
+		console.log(g);
+		console.log(ko);
+		console.log(dob);
+		db = Parse.Object.extend("DozentenBewertung");
+		var dbn = new db;
+		dbn.save(
+								{
+									dozentenObject:dob,
+									kurseObject:ko,
+									gesamt:g,
+									note:n
+								},{
+									success:function(object) {
+										document.getElementById('showRate').style.display = "block";
+										document.getElementById('addNew').style.display = "none";
+										getDozB();
+									},
+									error:function(model, error) {
+										alert(error);
+									}
+								});
+	}
+ </script> 
+</div>
+</body>
+</html>

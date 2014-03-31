@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" href="css/style.css" />
+    	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    	
+    	<script type="text/javascript" src="js/cordova.js"></script>
+    	
+    	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    	<script src="js/parse-1.1.2.min.js"></script>
+    	<script src="js/index.js"></script>
+    	<script src="js/csv.js"></script>
+    	<script src="js/jquery.jsonp-2.3.0.min.js"></script>
+        
+<link rel="stylesheet" type="text/css" href="push/css/component.css" />
+<script src="push/js/modernizr.custom.js"></script>
+        <title>DHBW2Go</title>
+    </head>
+    <body>
+       <!--- PUSH  -->
+<div class="cbp-spmenu-push">
+    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+    <h3>
+      <button id="hideLeftPush"><span class="glyphicon glyphicon-align-justify"></span></button>
+      Sidebar</h3>
+    <a href="index.html">Home</a> <a href="calender.html">Studenplan</a> <a href="mensa.html">Mensa</a> <a href="news.html">News</a> <a href="dozenten.html">Dozenten</a> <a onclick="window.open('http://mobile.bahn.de/bin/mobil/query.exe/dox?country=DEU&rt=1&use_realtime_filter=1&webview=&searchMode=NORMAL&sotRequest=1', '_blank', 'location=yes');">Zug/Bus</a></nav>
+  <div id="container">
+    <div class="main">
+      <section>
+        <button id="showLeftPush"><span class="glyphicon glyphicon-align-justify"></span></button>
+        <p class="dhlabel">DHBW2Go<span style="padding-left:15px" class="glyphicon glyphicon-send"></span></p>
+      </section>
+    </div>
+  </div>
+</div>
+</div>
+<script src="push/js/hammer.js"></script> 
+<script src="push/js/classie.js"></script> 
+<!--- PUSH  ENDE  -->
+	<div class="container">	
+		<div id="mensaH">Mensa</div>
+        <div id="showDay"></div>
+		<div id="inhalt">
+       	 <div>
+        	<h5 class="headline-menu" id="headM0"></h5>
+        	<p class="price-menu"id="priceM0"></p>
+        	<div class="description-menu"id="contentM0"></div>
+       	 </div>
+       	 <div class="gray">
+        	<h5 class="headline-menu" id="headM1"></h5>
+        	<p class="price-menu"id="priceM1"></p>
+        	<div class="description-menu"id="contentM1"></div>
+         </div>
+       	 <div>
+        	<h5 class="headline-menu" id="headM2"></h5>
+        	<p class="price-menu"id="priceM2"></p>
+        	<div class="description-menu"id="contentM2"></div>
+         </div>
+       	 <div class="gray">
+        	<h5 class="headline-menu" id="headM3"></h5>
+        	<p class="price-menu"id="priceM3"></p>
+        	<div class="description-menu"id="contentM3"></div>
+         </div>
+       	 <div>
+        	<h5 class="headline-menu" id="headM4"></h5>
+        	<p class="price-menu"id="priceM4"></p>
+        	<div class="description-menu"id="contentM4"></div>
+         </div>
+       	 <div class="gray">
+        	<h5 class="headline-menu" id="headM5"></h5>
+        	<p class="price-menu"id="priceM5"></p>
+        	<div class="description-menu"id="contentM5"></div>
+         </div>
+       	 <div>
+        	<h5 class="headline-menu" id="headM6"></h5>
+        	<p class="price-menu"id="priceM6"></p>
+        	<div class="description-menu"id="contentM6"></div>
+         </div>
+       	 <div class="gray">
+        	<h5 class="headline-menu" id="headM7"></h5>
+        	<p class="price-menu"id="priceM7"></p>
+        	<div class="description-menu"id="contentM7"></div>
+         </div>
+       	 <div>
+        	<h5 class="headline-menu" id="headM8"></h5>
+        	<p class="price-menu"id="priceM8"></p>
+        	<div class="description-menu"id="contentM8"></div>
+         </div>
+        </div>
+		<div id="mensa-footer">
+		<div id="mensaNav" class="span12">
+			<input id="T0" type="button" onclick="showMensa(this.id);" class="btn sample btn-lg btn-sample"></input>
+			<input id="T1" type="button" onclick="showMensa(this.id);" class="btn sample btn-lg btn-sample"></input>
+			<input id="T2" type="button" onclick="showMensa(this.id);" class="btn sample btn-lg btn-sample"></input>
+			<input id="T3" type="button" onclick="showMensa(this.id);" class="btn sample btn-lg btn-sample"></input>
+			<input id="T4" type="button" onclick="showMensa(this.id);" class="btn sample btn-lg btn-sample"></input>
+		</div>	
+		</div>
+		<script>
+		function KalenderWoche()
+		{
+		var KWDatum = new Date();
+		
+		var DonnerstagDat = new Date(KWDatum.getTime() +
+		(3-((KWDatum.getDay()+6) % 7)) * 86400000);
+		
+		KWJahr = DonnerstagDat.getFullYear();
+		
+		var DonnerstagKW = new Date(new Date(KWJahr,0,4).getTime() +
+		(3-((new Date(KWJahr,0,4).getDay()+6) % 7)) * 86400000);
+		
+		KW = Math.floor(1.5 + (DonnerstagDat.getTime() -
+		DonnerstagKW.getTime()) / 86400000/7);
+		return KW;
+		}
+		var baseUrl = "http://www.dhbw-loerrach.de/fileadmin/pubdocs/";
+		var url = baseUrl+'KW_'+KalenderWoche()+'.csv';
+		var day1;	
+		var day2;	
+		var day3;	
+		var day4;	
+		var day5;	
+		var salat;
+		   $.ajax({
+                type: 'GET',
+                url: url,
+                dataType: 'text',
+                success: function (csvAsString) {
+				csvAsArray=csvAsString.csvToArray({ fSep:';', trim:true });
+				var wdays = csvAsArray[1];
+				var days = csvAsArray[2];
+				var suppe = csvAsArray[3];	
+				var suppePreis = csvAsArray[4];	
+				var ofen = csvAsArray[5];	
+				var ofenPreis = csvAsArray[6];	
+				var trad= csvAsArray[7];	
+				var tradPreis = csvAsArray[8];
+				var wok = csvAsArray[9];			
+				var wokPreis = csvAsArray[10];			
+				var veg = csvAsArray[11];			
+				var vegPreis = csvAsArray[12];					
+				var gem = csvAsArray[13];			
+				var gemPreis = csvAsArray[14];					
+				var beilage = csvAsArray[15];			
+				var beilagePreis = csvAsArray[16];				
+				salat = csvAsArray[17];			
+				var geni = csvAsArray[18];			
+				var geniPreis = csvAsArray[19];		
+				
+								
+				day1 = new Array(wdays[1],days[1], suppe[1], suppePreis[2],trad[1], tradPreis[2], wok[1], wokPreis[2], veg[1], vegPreis[2],
+				gem[1], gemPreis[2], beilage[1], beilagePreis[2], geni[1], geniPreis[2]);
+				
+				day2 = new Array(wdays[3],days[3], suppe[3], suppePreis[4],trad[3], tradPreis[4], wok[3], wokPreis[4], veg[3], vegPreis[4],
+				gem[3], gemPreis[4], beilage[3], beilagePreis[4], geni[3], geniPreis[4]);
+						
+				day3 = new Array(wdays[5],days[5], suppe[5], suppePreis[6],trad[5], tradPreis[6], wok[5], wokPreis[6], veg[5], vegPreis[6],
+				gem[5], gemPreis[6], beilage[5], beilagePreis[6], geni[5], geniPreis[6]);
+										
+				day4 = new Array(wdays[8],days[8], suppe[8], suppePreis[9],trad[8], tradPreis[9], wok[8], wokPreis[9], veg[8], vegPreis[9],
+				gem[8], gemPreis[9], beilage[8], beilagePreis[9], geni[8], geniPreis[9]);
+											
+				day5 = new Array(wdays[11],days[11], suppe[11], suppePreis[12],trad[11], tradPreis[12], wok[11], wokPreis[12], veg[11], vegPreis[12],
+				gem[11], gemPreis[12], beilage[11], beilagePreis[12], geni[11], geniPreis[12]);
+				
+				
+				var t = 'T';
+				
+				
+										
+				
+				var dat = new Date().getDay();
+				if(dat > 5)
+					{dat = 5}
+				dat = dat - 1;
+				
+				var days = new Array(day1,day2,day3,day4,day5);
+				for(var i = 0; i<days.length; i++)
+				{
+					var getButton = document.getElementById(t+i);
+					var aktDay = days[i];
+					if(i == dat){getButton.setAttribute("class", "btn sample btn-lg active btn-sample")}											
+					getButton.value = aktDay[0]+ ',\n'+ aktDay[1];
+				}
+				
+				menuToDay(dat);
+			},jsonp: 'jsonp'
+				});	
+				
+				
+				function menuToDay(x){					
+					var days = new Array(day1,day2,day3,day4,day5);
+					var headers = new Array("Suppe ","Die Traditionellen ","Wok, Grill, Pasta ","Die Vegetarischen ","Gem&uuml;se & Co ","Beilagen ","Salateria ","Genie&szlig;er-Cup ");
+					
+					var inhalt = 'inhalt';
+					var head = 'head';
+					var content = 'content';
+					var price = 'price';
+					var t = 'T';
+					var a = 2;
+					var b = a+1;
+					var aktDay = days[x];
+					var res = salat[1];
+					var tres = res.split(" 100",1);
+					var pres = "100gr für je "+res.split(" EUR").pop()+"€";
+					document.getElementById('showDay').innerHTML = aktDay[0];
+					for( var j = 0; j < 8; j++)
+					{
+							
+							var getHead = document.getElementById(head+'M'+j);
+							var getContent = document.getElementById(content+'M'+j);
+							var getPrice = document.getElementById(price+'M'+j);
+							getHead.innerHTML = headers[j];
+							if(getHead.innerHTML == "Salateria ")
+							{
+								
+								getContent.innerHTML = tres;
+								getPrice.innerHTML = pres;
+								
+							}
+							else{
+							getContent.innerHTML = aktDay[a];
+							getPrice.innerHTML = aktDay[b];
+							a = b+1;
+							b = a+1;
+							}	
+					}
+				}
+					
+				
+			
+			
+ 			function showMensa(x){
+					var dat = x.substring(1,2);
+	 				for(var i = 0; i < 5;i++)
+						{				
+							var menu = document.getElementById('T'+i);	
+							menu.setAttribute("class", "btn sample btn-lg btn-sample");		
+						}
+						
+						var menu = document.getElementById(x);
+						menu.setAttribute("class", "btn sample btn-lg btn-sample active ");
+						menuToDay(dat);
+		
+					
+				}
+		</script>
+
+	</div>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    
+     </body>
+</html>

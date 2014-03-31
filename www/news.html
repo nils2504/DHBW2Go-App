@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+    	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    	
+    	<script type="text/javascript" src="js/cordova.js"></script>
+    	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    	<script src="js/parse-1.1.2.min.js"></script>
+    	<script src="js/index.js"></script>
+        
+<script src="js/Calendar.js"></script>
+
+<link rel="stylesheet" type="text/css" href="push/css/component.css" />
+<script src="push/js/modernizr.custom.js"></script>
+        <title>DHBW2Go</title>
+    </head>
+   <body onload="queryNews()">
+   <!--- PUSH  -->
+<div class="cbp-spmenu-push">
+    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+    <h3>
+      <button id="hideLeftPush"><span class="glyphicon glyphicon-align-justify"></span></button>
+      Sidebar</h3>
+    <a href="index.html">Home</a> <a href="calender.html">Studenplan</a> <a href="mensa.html">Mensa</a> <a href="news.html">News</a> <a href="dozenten.html">Dozenten</a> <a onclick="window.open('http://mobile.bahn.de/bin/mobil/query.exe/dox?country=DEU&rt=1&use_realtime_filter=1&webview=&searchMode=NORMAL&sotRequest=1', '_blank', 'location=yes');">Zug/Bus</a></nav>
+  <div id="container">
+    <div class="main">
+      <section>
+        <button id="showLeftPush"><span class="glyphicon glyphicon-align-justify"></span></button>
+        <p class="dhlabel">DHBW2Go<span style="padding-left:15px" class="glyphicon glyphicon-send"></span></p>
+      </section>
+    </div>
+  </div>
+</div>
+</div>
+<script src="push/js/hammer.js"></script> 
+<script src="push/js/classie.js"></script> 
+<!--- PUSH  ENDE  -->
+	<div class="container">		
+		<div id="eventH"><a id="eventHBut" href="javascript:changeDetails();"><span class="glyphicon glyphicon-chevron-left"></span></a><span id="eventHtext">Events</span><a id="eventAdd" href="addNews.html"><span class="glyphicon glyphicon-plus"></span></a></div>
+		<div id="newsContent"></div>
+		<div id="newsContentDetail"></div>
+	</div>
+	<script>
+	function changeDetails(){
+		document.getElementById('newsContent').style.display = 'block';
+		document.getElementById('newsContentDetail').style.display = 'none';
+		document.getElementById('eventHBut').style.display = "none";
+		document.getElementById('eventHtext').innerHTML = "Events";
+	}
+	
+	function newsInCal(title,date,uhr,ort,beschr){
+	var edda = date.split("-");
+	var eddt = edda[2];
+	var eddm = edda[1]-1;
+	var eddy = edda[0];
+	var u = uhr.split(":");
+	var uh = u[0];
+	var um = u[1];
+	var uh2 = "22";
+	var endDate = new Date(eddy,eddm,eddt,uh2,um);
+	var startDate = new Date(eddy,eddm,eddt,uh,um);
+	
+	var success = function(message) { alert("Success: " + message); };
+	var error = function(message) { alert("Error: " + message); };
+	
+	window.plugins.calendar.createEvent(title,"",beschr,startDate,endDate,success,error);
+	alert("KEIN ERROR");
+	//window.plugins.calendar.createEvent(title,"",beschr,uhr,endDate,success,error);
+}
+	
+	</script>
+	
+	
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    
+    
+    </body>
+</html>

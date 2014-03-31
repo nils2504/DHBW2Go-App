@@ -1,0 +1,232 @@
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-attachment:fixed;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:12px;
+    height:100% !important;
+    min-height:100% !important;
+    margin:0px;
+    padding:0px !important;
+	
+}
+.container{padding-left:20px;padding-right:20px}
+.logo{width:250px}
+.logoP{text-align:center;margin-top:50px; margin-bottom:50px;}
+
+.line div{width:45%; padding:2.5%}
+.metroImg{}
+.line .left{float:left;}
+.line .right{float:left;}
+.line .center{margin:0 auto;}
+.line {clear:both;}
+
+#newsContent .event .headLine h4{
+    float: right;
+    padding-right: 9px;
+	font-size:14px;
+}
+#newsContent .event .headLine h3:first-child{
+	float:left;
+	padding-left: 6px;
+	font-size:18px;
+	line-height:20px !important;
+}
+#newsContent .event .body{
+	clear:left;
+	padding-bottom: 15px;
+    padding-left: 6px;
+font-size:12px;
+}
+.gray{
+	background-color:#e9ecee;
+}
+.newsID{
+display:none;
+}
+#eventH{
+	font-size:20px;
+	padding-top:15px;
+	padding-bottom:15px;
+	text-align:center;
+	background-color:#df7575;
+	color:White;
+	margin-left:-20px;
+	margin-right:-20px;
+}
+#mensaH{
+	font-size:20px;
+	padding-top:15px;
+	padding-bottom:15px;
+	text-align:center;
+	background-color:#df7575;
+	color:White;
+	margin-left:-20px;
+	margin-right:-20px;
+}
+#calH{
+	font-size:20px;
+	padding-top:15px;
+	padding-bottom:15px;
+	text-align:center;
+	background-color:#df7575;
+	color:White;
+	margin-left:-20px;
+	margin-right:-20px;
+}
+#showDay{
+	font-size:16px;
+	padding-top:0px;
+	padding-bottom:5px;
+	padding-top:5px;
+	text-align:center;
+	background-color:#e9ecee;
+	color:Black;
+}
+#showMonth{
+	font-size:16px;
+	padding-top:0px;
+	padding-bottom:5px;
+	padding-top:5px;
+	text-align:center;
+	background-color:#e9ecee;
+	color:Black;
+}
+#eventHBut{
+	display:none;
+	float:left;
+	color:white;
+}
+#eventAdd{
+	display:none;
+	float:right;
+	color:white;
+	padding-right:10px;
+}
+
+
+/** MENSA **/
+
+#inhalt h5{
+	font-size:18px;
+}
+
+#inhalt .headline-menu{
+	float:left;
+	padding-left: 6px;
+}
+
+#inhalt .price-menu{
+	float: right;
+	padding-right: 5px;
+	padding-top: 9px;
+}
+
+#inhalt .description-menu{
+	clear:left;
+	padding-bottom: 10px;
+    padding-left: 6px;
+	font-size: 12px;
+}
+
+#mensa-footer{
+	font-size:20px;
+	padding-top:15px;
+	padding-bottom:15px;
+	text-align:center;
+	background-color:#df7575;
+	color:White;
+	height: 41px;
+}
+#cal-footer{
+	font-size:20px;
+	padding-top:15px;
+	padding-bottom:15px;
+	text-align:center;
+	background-color:#df7575;
+	color:White;
+	height: 41px;
+}
+#loginForm #password,#loginForm #user{height:60px; background-color:#E9ECEE; text-align:center}
+
+#loginForm #loginBtn{height:60px; background:#DF7575;margin-top:10px;}
+
+#registerForm input,#registerForm button,#registerForm select{
+	height:60px;}
+#registerForm button{background:#DF7575}
+#registerForm input,#registerForm select{background-color:#E9ECEE; text-align:center}
+
+/** NEWS DETAILS **/ 
+.beschr{ padding-left:5px; } 
+.infos.gray{ padding-left:5px; padding-bottom: 10px; } 
+.infos h4 { padding-top: 10px; }
+#calInhalt{display:none;}
+
+.JCheckBox{
+	float:left;
+	margin-right:10px;	
+}
+#regnew,#addNewUser{
+display:none;	
+}
+.cbp-spmenu-push{
+	background-color:#e9ecee;
+}
+.dhlabel{
+	text-align:center;
+	font-size:2.2em;
+	padding-bottom:0.5em;	
+	padding-top:1em;	
+}
+#showLeftPush{
+	background:transparent;
+	border:none;
+	font-size:2em;
+	padding:1em;
+	float:left;
+	Color:#df7575;
+}
+#hideLeftPush{
+	background:transparent;
+	border:none;
+	font-size:1em;
+	Color:White;
+	float:left;
+	padding-top:0.2em;
+}
+.fbevent{
+	background-color:#df7575;
+	Color:White;
+	position:absolute;
+	bottom:0;
+	height:40px;
+	margin-left: -20px !important;
+	margin-right:0 !important;
+}
+.fbevent span{
+	padding-left:10px;	
+}
+.bstar{
+	font-size:2em;
+	Color:#df7575;
+}
+.star{
+	Color:#df7575;	
+}
+#showRate div p{
+	
+	font-size:2em;
+	line-height:25px;
+}
+#showRate div h5{
+	font-size:2em;	
+	line-height:30px;
+}
+#showRate div{
+	margin-bottom:50px;	
+}
